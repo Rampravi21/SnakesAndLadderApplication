@@ -13,8 +13,8 @@ namespace SnakesAndLadderApp
     public partial class Form1 : Form
     {
         int flag = 0;
-        int x = 20, y=423, diceValue,p=0;
-        int bx = 20, by = 423,q = 0;
+        int p1x = 20, p1y=423, diceValue,player1Pos=0; // p1x,p1y tells the initial position of player 1
+        int p2x = 20, p2y = 423,player2Pos = 0;//p2x,p2y tells the initial position of player 2
         bool green = false,yellow = false;
         
         public Form1()
@@ -47,7 +47,7 @@ namespace SnakesAndLadderApp
                 if (green == true)
                 {
 
-                    p = Logics.Move(ref x, ref y, p, diceValue, p5_pbx); // To move the dice 
+                    player1Pos = Logics.Move(ref p1x, ref p1y, player1Pos, diceValue, p5_pbx); // To move the dice 
 
                 }
 
@@ -56,19 +56,19 @@ namespace SnakesAndLadderApp
                     p5_pbx.Visible = true;
                     p1_pbx.Visible = false;
                     green = true;
-                    p5_pbx.Location = new Point(x, y);
-                    p++;
+                    p5_pbx.Location = new Point(p1x, p1y);
+                    player1Pos++;
 
                 }
 
-                if (p == 100)
+                if (player1Pos == 100)
                 {
                     MessageBox.Show(".............Hurray I Win.......... ");
                     btn_roll.Visible = false;
                 }
                 
-                p = Logics.Snakebite(ref x, ref y, p, p5_pbx);// method to slide down when  a snake bite 
-                p = Logics.Ladder(ref x, ref y, p, p5_pbx);// method to climb ladder
+                player1Pos = Logics.Snakebite(ref p1x, ref p1y, player1Pos, p5_pbx);// method to slide down when  a snake bite 
+                player1Pos = Logics.Ladder(ref p1x, ref p1y, player1Pos, p5_pbx);// method to climb ladder
 
                 if (diceValue == 6)
                 {
@@ -97,7 +97,7 @@ namespace SnakesAndLadderApp
             if (yellow == true)
             {
 
-                q = Logics.Move(ref bx, ref by, q, diceValue, p6_pbx);
+                player2Pos = Logics.Move(ref p2x, ref p2y, player2Pos, diceValue, p6_pbx);
 
             }
 
@@ -106,19 +106,19 @@ namespace SnakesAndLadderApp
                 p6_pbx.Visible = true;
                 p2_pbx.Visible = false;
                 yellow = true;
-                p6_pbx.Location = new Point(x, y);
-                q++;
+                p6_pbx.Location = new Point(p2x, p2y);
+                player2Pos++;
 
             }
 
-            if (q == 100)
+            if (player2Pos == 100)
             {
                 MessageBox.Show("..........Hurray I Win.......");
                 btn_roll2.Visible = false;
             }
 
-            q = Logics.Snakebite(ref bx, ref by, q, p6_pbx);
-            q = Logics.Ladder(ref bx, ref by, q, p6_pbx);
+            player2Pos = Logics.Snakebite(ref p2x, ref p2y, player2Pos, p6_pbx);
+            player2Pos = Logics.Ladder(ref p2x, ref p2y, player2Pos, p6_pbx);
 
             if (diceValue == 6)
             {
