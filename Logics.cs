@@ -10,7 +10,9 @@ namespace SnakesAndLadderApp
 {
     public class Logics
     {
-        // Method which defines the dice roll
+         /// <summary>
+        /// Method which defines the dice roll
+       /// </summary>
         public static int Rolldice(PictureBox pxb)
         {
             int dice = 0;
@@ -19,11 +21,11 @@ namespace SnakesAndLadderApp
             pxb.Image = Image.FromFile(@"C:\Users\Sai\source\repos\SnakesAndLadderApp\Resources\" + dice + ".png");
             return dice;
 
-        }
+        }     
 
-        //......Method End..... //
-
-        // method to move the players according to the dice value //
+         /// <summary>
+        /// Method to move the players according to the dice value
+       /// </summary>
         public static int Move(ref int x, ref int y, int p, int dice, PictureBox pxb)
         {
             if (dice + p > 100) //101
@@ -109,10 +111,9 @@ namespace SnakesAndLadderApp
 
             return p;
         }
-
-        // ...end of method ....  //
-
-        // Method which deines the player position when hit by a snake //
+         /// <summary>
+        /// Method which tells the player position when hit by a snake
+       /// </summary>
         public static int Snakebite(ref int x, ref int y, int p, PictureBox pxb)
         {
             if (p == 16)
@@ -186,10 +187,10 @@ namespace SnakesAndLadderApp
             pxb.Location = new Point(x, y);
             return p;
         }
-
-        // End of Method //
-
-        // Method which tells the palyer position when hit by a ladder //
+        
+       /// <summary>
+      /// Method which tells the player position when hit by a ladder
+     /// </summary>
         public static int Ladder(ref int x, ref int y, int p, PictureBox pxb)
         {
             if (p == 2)
@@ -270,6 +271,5 @@ namespace SnakesAndLadderApp
             pxb.Location = new Point(x, y);
             return p;
         }
-        // End of method //
     }
 }
